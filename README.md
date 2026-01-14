@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# SentryLink
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Setup Instructions
 
-Currently, two official plugins are available:
+Follow these steps to set up and run the project locally.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1.1 Prerequisites
 
-## React Compiler
+- Node.js (>= 20.x) [[Setup Guide]](https://nodejs.org/en/download)
+- npm (Usually comes with node.js)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1.2 Getting Started
 
-## Expanding the ESLint configuration
+- **Clone the repository:**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  ```bash
+  git clone https://github.com/TOU-HID/sentryLink
+  ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Navigate to the frontend directory:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  ```bash
+  cd frontend
+  ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Install dependencies:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+  ```bash
+  npm install
+  ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Start the dev server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+  ```bash
+  npm run dev
+  ```
+
+---
+
+## Design Decisions
+
+- **Framework & Tooling**: Built with **React** + **TypeScript**, using **Vite** for fast development and modern builds.
+- **Styling**: **Tailwind CSS** .
+- **State Management**: Simple local state with `useState` and prop drilling for selected document and screen navigation — keeps the app straightforward for this scope.
+- **Data & Types**: Mocked data lives in `mockData/` and shared types are in `src/types` to maintain clear contracts and make future API integration easier.
+- **Components**: Small, focused components (e.g., `Modal`, `StatusChip`, `Table`) to improve reusability and testability.
+- **Accessibility & UX**: Use semantic markup, visible focus states, and avoid relying on color alone to convey status.
+- **Build & CI**: `npm run build` runs `tsc -b` before `vite build` to ensure type checking is part of the CI flow.
