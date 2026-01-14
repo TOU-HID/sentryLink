@@ -20,7 +20,7 @@ Follow these steps to set up and run the project locally.
 - Navigate to the frontend directory:
 
   ```bash
-  cd frontend
+  cd sentryLink
   ```
 
 - Install dependencies:
