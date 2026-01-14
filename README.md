@@ -45,4 +45,3 @@ Follow these steps to set up and run the project locally.
 - **Data & Types**: Mocked data lives in `mockData/` and shared types are in `src/types` to maintain clear contracts and make future API integration easier.
 - **Components**: Small, focused components (e.g., `Modal`, `StatusChip`, `Table`) to improve reusability and testability.
 - **Accessibility & UX**: Use semantic markup, visible focus states, and avoid relying on color alone to convey status.
-- **Build & CI**: `npm run build` runs `tsc -b` before `vite build` to ensure type checking is part of the CI flow.
